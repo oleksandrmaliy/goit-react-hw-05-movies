@@ -1,0 +1,14 @@
+.menu {
+  list-style: none;
+  display: flex;
+}
+
+.link {
+  background-color: rgb(210, 121, 121);
+  text-decoration: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}

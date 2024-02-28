@@ -1,16 +1,11 @@
+import MainMenu from './MainMenu/MainMenu';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#07853e'
-      }}
-    >
-      React homework template hw 5
+    <div>
+      <MainMenu />
     </div>
   );
 };
+
+// const APIKEY = 4eee553d147a6af33b8e479e9282e0a2;
