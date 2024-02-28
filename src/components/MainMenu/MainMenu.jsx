@@ -1,17 +1,18 @@
+import { NavLink } from 'react-router-dom';
 import styles from './MainMenu.module.css';
 
 const mainMenu = () => {
   return (
     <ul className={styles.menu}>
       <li>
-        <a className={styles.link} href="/">
+        <NavLink className={styles.link} to="/">
           Home
-        </a>
+        </NavLink>
       </li>
       <li>
-        <a className={styles.link} href="/movie">
-          Movie
-        </a>
+        <NavLink className={styles.link} to="/movies">
+          Movies
+        </NavLink>
       </li>
     </ul>
   );
