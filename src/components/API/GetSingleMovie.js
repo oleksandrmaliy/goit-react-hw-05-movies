@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const getAllMovies = () => {
+const getSingleMovie = id => {
   const options = {
     method: 'GET',
-    url: 'https://api.themoviedb.org/3/trending/all/day',
-    // params: {language: 'en-US'},
+    url: `https://api.themoviedb.org/3/movie/${id}`,
+    params: { language: 'en-US' },
     headers: {
       accept: 'application/json',
       Authorization:
@@ -14,4 +14,5 @@ const getAllMovies = () => {
 
   return axios.request(options);
 };
-export default getAllMovies;
+
+export default getSingleMovie;

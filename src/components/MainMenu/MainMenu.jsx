@@ -14,6 +14,11 @@ const mainMenu = () => {
           Movies
         </NavLink>
       </li>
+      <li>
+        <NavLink className={styles.link} to="/contacts">
+          Contacts
+        </NavLink>
+      </li>
     </ul>
   );
 };
