@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './HomePage.module.css';
 
 import getAllMovies from 'components/API/GetTrendingMovies';
@@ -8,6 +8,7 @@ const HomePage = () => {
   const [allMovies, setAllMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const location = useLocation();
 
   useEffect(() => {
     const allMovies = async () => {
@@ -28,7 +29,9 @@ const HomePage = () => {
 
   const dailyTrend = allMovies.map(({ id, title, name }) => (
     <li key={id}>
-      <Link to={`/movies/${id}`}>{title || name}</Link>
+      <Link to={`/movies/${id}`} state={{ from: location }}>
+        {title || name}
+      </Link>
     </li>
   ));
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
 
 import getMoviesList from 'components/API/GetMoviesList';
 
@@ -13,6 +13,8 @@ const MoviesPage = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const movie = searchParams.get('query');
+
+  const location = useLocation();
 
   useEffect(() => {
     const moviesList = async () => {
@@ -34,7 +36,9 @@ const MoviesPage = () => {
 
   const searchedMoviesList = moviesList.map(({ id, title, name }) => (
     <li key={id}>
-      <Link to={`/movies/${id}`}>{title || name}</Link>
+      <Link to={`/movies/${id}`} state={{ from: location }}>
+        {title || name}
+      </Link>
     </li>
   ));
 
