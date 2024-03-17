@@ -16,7 +16,7 @@ const MovieReviewsInfo = () => {
       try {
         setLoading(true);
         const response = await getMovieReviews(id);
-        console.log(response.data.results);
+        // console.log(response.data.results);
         setReviews(response.data.results);
       } catch (error) {
         setError(error.message);
@@ -25,10 +25,10 @@ const MovieReviewsInfo = () => {
       }
     };
 
-    console.log(error, loading, reviews);
+    // console.log(error, loading, reviews);
     movieReviews();
-  }, []);
-
+  }, [id]);
+  console.log(reviews);
   return (
     <div>
       {loading && <p>...Loading</p>}

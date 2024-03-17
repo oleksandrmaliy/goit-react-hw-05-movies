@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import getMovieCast from '../API/GetMovieCast';
 
 const MovieCastInfo = () => {
-  const [cast, setCast] = useState([]);
+  const [castCrew, setCastCrew] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -16,18 +16,18 @@ const MovieCastInfo = () => {
       try {
         setLoading(true);
         const response = await getMovieCast(id);
-        console.log(response.data.cast);
-        setCast(response.data.cast);
+        const castCrew = response.data.cast;
+        setCastCrew(castCrew);
       } catch (error) {
         setError(error.message);
       } finally {
         setLoading(false);
       }
     };
-    console.log(error, loading, cast);
+    // console.log(error, loading, cast);
     movieCast();
-  }, []);
-
+  }, [id]);
+  console.log(castCrew);
   return (
     <div>
       {loading && <p>...Loading</p>}
