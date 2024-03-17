@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_05_movies=self.webpackChunkgoit_react_hw_05_movies||[]).push([[877],{877:function(n,t,e){e.r(t),e.d(t,{default:function(){return a}});var s="ContactsPage_contacts__m3nnh",c=e(184),a=function(){return(0,c.jsxs)("div",{className:s,children:[(0,c.jsx)("h2",{children:"Contacts Page Content"}),(0,c.jsx)("p",{children:"Call Pshon'ka"})]})}}}]);
+//# sourceMappingURL=877.74f0243a.chunk.js.map
