@@ -4,8 +4,11 @@ import styles from './HomePage.module.css';
 
 import getAllMovies from 'components/API/GetTrendingMovies';
 
+const nr = Math.round(Math.random() * 20);
+
 const HomePage = () => {
   const [allMovies, setAllMovies] = useState([]);
+  const [image, setImage] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const location = useLocation();
@@ -17,6 +20,9 @@ const HomePage = () => {
         const response = await getAllMovies();
         const movies = response.data.results;
         setAllMovies(movies?.length ? [...movies] : []);
+        setImage(
+          `url(https://image.tmdb.org/t/p/w500${movies[nr].backdrop_path})`
+        );
       } catch (error) {
         setError(error.message);
       } finally {
@@ -28,19 +34,34 @@ const HomePage = () => {
   }, []);
 
   const dailyTrend = allMovies.map(({ id, title, name }) => (
-    <li key={id}>
-      <Link to={`/movies/${id}`} state={{ from: location }}>
+    <li className={styles.li} key={id}>
+      <Link
+        className={styles.linkage}
+        to={`/movies/${id}`}
+        state={{ from: location }}
+      >
         {title || name}
       </Link>
     </li>
   ));
-
+  console.log(allMovies);
   return (
-    <div className={styles.home}>
-      <h2>Home Page Content</h2>
+    <div
+      style={
+        image
+          ? {
+              backgroundImage: image,
+              backgroundSize: 'cover',
+            }
+          : { backgroundColor: 'lightred' }
+      }
+      className={styles.home}
+    >
       {loading && <p>...Loading</p>}
       {error && <h3>{error}</h3>}
-      {(!loading || error) && <ol>{dailyTrend}</ol>}
+      {Boolean(!loading && !error) && (
+        <ul className={styles.list}>{dailyTrend}</ul>
+      )}
     </div>
   );
 };

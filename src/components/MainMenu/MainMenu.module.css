@@ -1,18 +1,36 @@
 .menu {
-  list-style: none;
   display: flex;
+  padding: 30px;
+  margin: 0;
+  list-style: none;
+  background-color: #0d253f;
 }
 
 .link {
-  background-color: rgb(210, 121, 121);
-  text-decoration: none;
+  display: block;
   padding: 10px 15px;
-  margin: 0 5px;
-  color: black;
+  margin-right: 15px;
+  text-decoration: none;
+  text-align: center;
+  width: 100px;
+  border-radius: 5px;
+  background-color: #01b4e4;
+  color: #0d253f;
   font-size: 20px;
   font-weight: bold;
 }
 
 .link:global(.active) {
-  color: yellow;
+  color: white;
+}
+
+.divsvg {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.svg {
+  width: 200px;
+  height: auto;
 }

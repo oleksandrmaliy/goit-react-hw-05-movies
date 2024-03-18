@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
 
+import SearchForm from 'components/SearchForm/SearchForm';
 import getMoviesList from 'components/API/GetMoviesList';
 
 import styles from './MoviesPage.module.css';
 
 const MoviesPage = () => {
-  const [query, setQuery] = useState('');
+  // const [query, setQuery] = useState('');
   const [moviesList, setMoviesList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const movie = searchParams.get('query');
 
   const location = useLocation();
@@ -36,26 +37,36 @@ const MoviesPage = () => {
 
   const searchedMoviesList = moviesList.map(({ id, title, name }) => (
     <li key={id}>
-      <Link to={`/movies/${id}`} state={{ from: location }}>
+      <Link
+        className={styles.movieLink}
+        to={`/movies/${id}`}
+        state={{ from: location }}
+      >
         {title || name}
       </Link>
     </li>
   ));
 
-  const handleChange = ({ target }) => {
-    setQuery(target.value);
-  };
+  // const handleChange = ({ target }) => {
+  //   setQuery(target.value);
+  // };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    setSearchParams({ query });
-    setQuery('');
-  };
+  // const handleSubmit = event => {
+  //   event.preventDefault();
+  //   setSearchParams( {query}  );
+  //   setQuery('');
+  // };
+  // const handleSubmit = value => {
+  //   setSearchParams({ query: value });
+  // };
 
   return (
-    <div className={styles.home}>
-      <h2>Movies Page Content</h2>
-      <form onSubmit={handleSubmit}>
+    <div className={styles.movies}>
+      <SearchForm />
+      {/* // onChange={handleChange}
+        // onSubmit={handleSubmit} */}
+
+      {/* <form className={styles.form} onSubmit={handleSubmit}>
         <input
           onChange={handleChange}
           name="search"
@@ -66,15 +77,20 @@ const MoviesPage = () => {
           placeholder="Search movies"
           required
         />
-
-        <button id="submitButton" type="submit">
-          <span className={styles.SearchFormButtonLabel}>Search</span>
+        <button
+          id="submitButton"
+          type="submit"
+          className={styles.searchFormButton}
+        >
+          <span className={styles.searchFormButtonLabel}>Search</span>
         </button>
-      </form>
+      </form> */}
 
       {loading && <p>...Loading</p>}
       {error && <h3>{error}</h3>}
-      {(!loading || error) && <ol>{searchedMoviesList}</ol>}
+      {!loading && !error && (
+        <ul className={styles.movieList}>{searchedMoviesList}</ul>
+      )}
     </div>
   );
 };

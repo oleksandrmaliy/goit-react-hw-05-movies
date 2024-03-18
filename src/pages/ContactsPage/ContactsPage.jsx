@@ -3,8 +3,23 @@ import styles from './ContactsPage.module.css';
 const ContactsPage = () => {
   return (
     <div className={styles.contacts}>
-      <h2>Contacts Page Content</h2>
-      <p>Call Pshon'ka</p>
+      <a
+        className={styles.webLink}
+        target="_blank"
+        rel="noreferrer"
+        href="https://www.themoviedb.org/"
+      >
+        Visit TMDB page
+      </a>
+      <br />
+      <a
+        className={styles.webLink}
+        target="_blank"
+        rel="noreferrer"
+        href="https://goit.global/ua/"
+      >
+        Visit GoIT page
+      </a>
     </div>
   );
 };
