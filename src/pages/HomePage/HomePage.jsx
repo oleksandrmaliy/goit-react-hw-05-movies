@@ -44,7 +44,7 @@ const HomePage = () => {
       </Link>
     </li>
   ));
-  console.log(allMovies);
+
   return (
     <div
       style={
